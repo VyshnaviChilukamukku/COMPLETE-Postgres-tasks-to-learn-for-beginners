@@ -1,0 +1,7 @@
+Schema or user Roles and Grant details:-
+----------------------------------------
+\dn+ pepsio_consumptionv2
+
+List of Schemas in DB
+-------------------------
+SELECT distinct schemaname FROM pg_tables;
