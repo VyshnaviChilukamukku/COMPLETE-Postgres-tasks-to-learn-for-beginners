@@ -1,0 +1,19 @@
+
+CREATE EXTENSION
+================
+postgres=# create extension plpython3u;
+CREATE EXTENSION
+postgres=# \dx
+List of installed extensions
+Name | Version | Schema | Description
+------------+---------+------------+-------------------------------------------
+plpgsql | 1.0 | pg_catalog | PL/pgSQL procedural language
+plpython3u | 1.0 | pg_catalog | PL/Python3U untrusted procedural language
+(2 rows)postgres=# drop extension plpython3u;
+DROP EXTENSION
+postgres=# \dx
+List of installed extensions
+Name | Version | Schema | Description
+---------+---------+------------+------------------------------
+plpgsql | 1.0 | pg_catalog | PL/pgSQL procedural language
+(1 row)postgres=#
