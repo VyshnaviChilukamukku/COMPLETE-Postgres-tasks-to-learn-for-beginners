@@ -1,0 +1,19 @@
+SESSION DETAILS
+================== 
+/home/postgres/scripts/active_sql_status.sql
+select count(*) from pg_stat_activity where state='active' and (query_start <= current_timestamp - INTERVAL '30' MINUTE) and usename!='repuser';
+
+select usename, state,count(*) from pg_stat_activity  group by usename ,state order by state;
+select state,count(*) from pg_stat_activity  group by state ;
+
+For Ex:-
+       state        | count
+---------------------+-------
+                     |     5
+ active              |     8
+ idle in transaction |     1
+ idle                |   630
+(4 rows)
+
+modify or change username
+ALTER USER user_name RENAME TO new_name.
