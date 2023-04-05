@@ -1,0 +1,12 @@
+
+PG AGENT:
+========
+-bash-4.2$ systemctl status pgagent_13.service
+● pgagent_13.service - PgAgent for PostgreSQL 13
+   Loaded: loaded (/usr/lib/systemd/system/pgagent_13.service; enabled; vendor preset: disabled)
+   Active: active (running) since Wed 2022-10-19 21:43:13 CDT; 2s ago
+  Process: 24411 ExecStart=/usr/bin/pgagent_13 -s ${LOGFILE} hostaddr=${DBHOST} dbname=${DBNAME} user=${DBUSER} port=${DBPORT} (code=exited, status=0/SUCCESS)
+Main PID: 24412 (pgagent_13)
+    Tasks: 1
+   CGroup: /system.slice/pgagent_13.service
+           └─24412 /usr/bin/pgagent_13 -s /var/log/pgagent_13.log hostaddr=127.0.0.1 dbname=postgres user=postgres port=5432
