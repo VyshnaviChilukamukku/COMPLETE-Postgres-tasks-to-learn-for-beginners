@@ -1,0 +1,11 @@
+
+Database Connect:-
+==================
+VIP name to connect to database and user is pgvip.visrepprodha02.ch3.prod.i.com.
+
+[postgres@lnx1549 ~]$ psql -d db_internalapp_prod_02 -h pgvip.visrepprodha02.ch3.prod.i.com -U vis_rep_kdp_p1
+Password for user vis_rep_kdp_p1:
+psql (13.4)
+Type "help" for help.
+
+db_internalapp_prod_02=>
