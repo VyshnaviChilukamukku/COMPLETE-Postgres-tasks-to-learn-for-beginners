@@ -1,0 +1,32 @@
+SESSION KILL:-
+==================
+
+Find Blocking sessions:-
+=========================
+SELECT bl.pid     AS blocked_pid,
+     a.usename  AS blocked_user,
+     a.query    AS blocked_statement
+FROM  pg_catalog.pg_locks         bl
+ JOIN pg_catalog.pg_stat_activity a  ON a.pid = bl.pid
+WHERE NOT bl.granted;
+
+SELECT bl.pid     AS blocked_pid,
+     a.usename  AS blocked_user,
+     kl.pid     AS blocking_pid,
+     ka.usename AS blocking_user,
+     a.query    AS blocked_statement
+FROM  pg_catalog.pg_locks         bl
+JOIN pg_catalog.pg_stat_activity a  ON a.pid = bl.pid
+JOIN pg_catalog.pg_locks         kl ON kl.transactionid = bl.transactionid AND kl.pid != bl.pid
+JOIN pg_catalog.pg_stat_activity ka ON ka.pid = kl.pid
+WHERE NOT bl.granted;
+
+ blocked_pid |   blocked_user   | blocking_pid |  blocking_user   |                                                        blocked_statement
+
+-------------+------------------+--------------+------------------+------------------------------------------------------------------------------------------
+---------------------------------------
+        8742 | vis_rep_prism_p1 |         4235 | vis_rep_prism_p1 | UPDATE USR_PREF_TBL  SET USER_ID =$1, PREF_VALUE=$2, PREF_TYPE=$3, LAST_UPD_BY=$4, LAST_U
+PD=current_timestamp where USER_ID =$5
+(1 row)
+
+ blocking_pid is Culprit for many blockings, so need to kill it not blocked session/Pid
