@@ -1,0 +1,21 @@
+SCHEMA Creation Request:-
+-------------------------
+ Details as follows:
+• Postgres Instance: - lnx0904.ch3.qa.i.com:5432
+• Postgres database name:- analytics_qa_01
+• New Instance name :- aa_store_constellation_beer_2022_p01
+• Provide access as below
+• analytics_etl_qauser -  Admin level privileges to create/drop/modify schema objects, read/write all
+• analytics_db_reader  -  Reader privileges to view all schema objects, be able to execute any functions created by above user
+
+CREATE ROLE aa_store_constellation_beer_2022_p01 WITH NOLOGIN NOSUPERUSER INHERIT NOCREATEDB NOCREATEROLE  NOREPLICATION;
+CREATE SCHEMA aa_store_constellation_beer_2022_p01 AUTHORIZATION postgres;
+GRANT ALL ON SCHEMA aa_store_constellation_beer_2022_p01 TO analytics_etl_qauser;
+GRANT ALL ON SCHEMA aa_store_constellation_beer_2022_p01 TO postgres;
+GRANT Connect ON DATABASE analytics_qa_01 TO aa_store_constellation_beer_2022_p01;
+ALTER ROLE aa_store_constellation_beer_2022_p01 SET search_path TO aa_store_constellation_beer_2022_p01;
+alter schema aa_store_constellation_beer_2022_p01 owner to aa_store_constellation_beer_2022_p01;
+GRANT SELECT ON ALL TABLES IN SCHEMA aa_store_constellation_beer_2022_p01 TO analytics_db_reader;
+
+Grant to Individual Table to another user/schema
+grant select on table opsbld_iri_t2.meta_orpn_adpn to opsbld_iri_t1;
