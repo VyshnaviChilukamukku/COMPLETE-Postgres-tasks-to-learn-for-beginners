@@ -1,0 +1,5 @@
+Find DB port number:-
+-------------------
+SELECT *
+FROM pg_settings
+WHERE name = 'port';
