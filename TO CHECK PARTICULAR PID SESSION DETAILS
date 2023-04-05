@@ -1,0 +1,11 @@
+TO CHECK PARTICULAR PID SESSION DETAILS:-
+===========================================
+SELECT a.pid,a.application_name,
+     a.usename  AS blocked_user,
+     a.query    AS blocked_statement
+FROM  pg_catalog.pg_stat_activity a where a.pid =380561;
+
+SELECT a.pid,a.application_name,
+     a.usename  AS blocked_user,
+     a.query    AS blocked_statement
+FROM  pg_catalog.pg_stat_activity a where a.pid in (99834,91116,91379);
