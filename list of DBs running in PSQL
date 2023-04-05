@@ -1,0 +1,13 @@
+List of DBs running in PSQL:-
+===========================
+Use \l or \l+ in psql to show all databases in the current PostgreSQL server
+
+Find Configuration file:-
+[postgres@lnx0901 ~]$ psql -d analytics_prod_01
+psql (11.2)
+Type "help" for help.
+
+analytics_prod_01=# SHOW config_file;
+              config_file
+----------------------------------------
+ /var/lib/pgsql/11/data/postgresql.conf
