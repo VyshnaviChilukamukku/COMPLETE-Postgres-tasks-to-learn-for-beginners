@@ -1,0 +1,29 @@
+
+
+REPLICATION ISSUE:-
+=================
+postgres=# select pg_current_wal_lsn(),pg_walfile_name(pg_current_wal_lsn());
+ pg_current_wal_lsn |     pg_walfile_name
+--------------------+--------------------------
+ 2009/FB7204C0      | 0000000100002009000000FB
+(1 row)
+
+[postgres@lnx1489 ~]$ ps -ef|grep recover
+postgres 188932 187545  0 15:59 pts/0    00:00:00 grep --color=auto recover
+postgres 294644 294636  1 Jun23 ?        07:24:53 postgres: startup recovering 000000010000200500000028
+
+postgres=# SELECT pg_last_wal_receive_lsn()  as "Slave Wal";
+   Slave Wal
+---------------
+ 2009/61205278
+(1 row)
+
+postg
+
+
+
+postgres=# select pg_current_wal_lsn(),pg_walfile_name(pg_current_wal_lsn());
+ pg_current_wal_lsn |     pg_walfile_name
+--------------------+--------------------------
+ 200A/A97676F0      | 000000010000200A000000A9
+(1 row)
