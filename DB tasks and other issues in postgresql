@@ -1,0 +1,22 @@
+common source for postgres
+
+"https://www.postgresql.org/"
+
+==================================================
+
+LIST OF TASKS USING PG SQL:
+
+1). Database Connect
+2). PG POOL
+3). GRANTS
+4). Find DB port number
+5). Object count verification
+6). Database size check
+7). List of DBs running in PSQL
+8). PG AGENT
+9). REPLICATION ISSUE
+10). POSTGRES SERVER MAINTENANCE STOP/START
+11). Delete old logs
+12). CREATE USER
+13). KILL SESSION
+14). CHECK PARTICULAR PID SESSION DETAILS
