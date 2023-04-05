@@ -1,0 +1,22 @@
+
+POSTGRES SERVER MAINTENANCE STOP/START
+===========================================
+top cu postgres
+
+ 
+/usr/pgsql-13/bin/pg_ctl -D /var/lib/pgsql/13/data/ status
+/usr/pgsql-11/bin/pg_ctl -D /var/lib/pgsql/11/data/ status
+ 
+/usr/pgsql-13/bin/pg_ctl -D /var/lib/pgsql/13/data/ stop
+
+ /usr/pgsql-13/bin/pg_ctl -D /var/lib/pgsql/13/data/ start
+
+ [postgres@lnx1488 ~]$ psql -d db_internalapp_prod_05
+psql (13.0)
+Type "help" for help.db_internalapp_prod_05=# \dx
+List of installed extensions
+Name | Version | Schema | Description
+---------+---------+---------------+---------------------------------------------------------------------
+plpgsql | 1.0 | pg_catalog | PL/pgSQL procedural language
+postgis | 3.0.2 | vis_as_rep_p1 | PostGIS geometry, geography, and raster spatial types and functions
+(2 rows)db_internalapp_prod_05=#
