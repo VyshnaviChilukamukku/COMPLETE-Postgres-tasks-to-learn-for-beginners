@@ -1,0 +1,4 @@
+
+Delete old logs
+==============
+find /pg_logs/ARCHIVELOG/pg_wal -mtime -1 -name '00000001*' -exec rm {} \;
