@@ -1,0 +1,29 @@
+CREATE USER:-
+---------------
+create user vis_rep_rbrecon_t1 with password 'Passw0rd' login nosuperuser inherit nocreatedb nocreaterole noreplication;
+CREATE SCHEMA vis_rep_rbrecon_t1 AUTHORIZATION postgres;
+GRANT ALL ON SCHEMA vis_rep_rbrecon_t1 TO vis_rep_rbrecon_t1;
+GRANT ALL ON SCHEMA vis_rep_rbrecon_t1 TO postgres;
+GRANT Connect ON DATABASE db_internalapp_qa_01 TO vis_rep_rbrecon_t1;
+ALTER ROLE vis_rep_rbrecon_t1 SET search_path TO vis_rep_rbrecon_t1;
+alter schema vis_rep_rbrecon_t1 owner to vis_rep_rbrecon_t1;
+
+READ ONLY ACCESS
+GRANT SELECT ON ALL TABLES IN SCHEMA lorustgtrep TO prodpbi;
+
+REVOKE ALL ON SCHEMA lorustgtrep FROM prodpbi;
+
+############################################################################################################################################################ 
+Schema backup: pg_dump -d db_internalapp_qa_01 -n vis_rep_wba_t1 -Fp -f vis_rep_wba_t1.sql
+Schemna backup custom: pg_dump -d db_internalapp_qa_01 -n vis_rep_wba_t1 -Fc -f vis_rep_wba_t1.dmp
+Single table backup: pg_dump -d db_internalapp_qa_01 -t vis_rep_wba_t1.ae_log -Fp -f ae.sql
+Multiple tables backup: pg_dump -d db_internalapp_qa_01 -t vis_rep_wba_t1.ae_log -t vis_rep_wba_t1.ae_performance_log -t vis_rep_wba_t1.attr_tmp -Fp -f ae123.sql
+DDL only backup: pg_dump -d db_internalapp_qa_01 -n vis_rep_wba_t1 -s -Fp -f vis_rep_wba_t1_1.sql
+How to restore a single table from custom dump pg_restore vis_rep_wba_t1_16032022.dmp -t adm_usr_mgr_map -f ae_log1res.sql
+sed -i 's,adm_usr_mgr_map,adm_usr_mgr_map_316,g' ae_log1res.sql
+How to restore schema backup as different name:
+Custom backup
+pg_restore vis_rep_wba_t1_16032022.dmp -f vis_rep_wba_t1_16032022.sql
+sed -i 's,adm_usr_mgr_map,adm_usr_mgr_map_316,g'  vis_rep_wba_t1_16032022.sql
+
+schema import ==> psql -h localhost -U user -d datbasename -f /path to the sql file
