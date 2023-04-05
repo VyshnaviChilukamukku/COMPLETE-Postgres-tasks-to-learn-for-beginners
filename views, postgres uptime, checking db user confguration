@@ -1,0 +1,20 @@
+Get DDL of View
+=================
+set search_path
+\ev viewname
+and just copy paste and dont Edit anything
+
+Postgres DB Uptime or last startup time
+--------------------------------------------
+ SELECT current_timestamp - pg_postmaster_start_time();
+
+Check DB user config:-
+------------------------
+SELECT r.rolname, d.datname, rs.setconfig
+FROM   pg_db_role_setting rs
+LEFT   JOIN pg_roles      r ON r.oid = rs.setrole
+LEFT   JOIN pg_database   d ON d.oid = rs.setdatabase
+
+
+output format change by
+/x and run query
